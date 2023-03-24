@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    <div class="sidebarsWrapper">
+    <!-- <div class="sidebarsWrapper">
       <div class="sidebars">
         <a class="barWrapper" clear href="#abstract-a" id="bar2"
           ><span>Abstract</span>
@@ -48,7 +48,7 @@
           <div class="bar"></div
         ></a>
       </div>
-    </div>
+    </div> -->
     <main class="content">
       <section class="heading">
         <h1 class="title">
@@ -69,7 +69,12 @@
           Inspired by organisms evolving through cooperation and competition between different populations on Earth, we study the emergence of artificial collective intelligence through massive-agent reinforcement learning. To this end, we propose a new massive-agent reinforcement learning environment, Lux, where dynamic and massive agents in two teams scramble for limited resources and fight off the darkness. Compared to previous environments, Lux has more complex dynamics as well as much larger-scale populations, giving rise to a new level of environment complexity. In Lux, we build our agents through reinforcement learning with a guided curriculum and leverage centralized control via a pixel-to-pixel policy network. As agents co-evolve through self-play, we observe several stages of intelligence, from the acquisition of atomic skills to the development of group strategies despite there being no explicit coordination mechanism. We further analyze the behaviors of our agents and how as training progesses, collective intelligence progresses from the scale of a few units, to hundreds of units, to then collective control of thousands of units.
         </p>
       </section>
-
+      <!-- <video autoplay="" muted="" loop="" height="100%">
+        <source
+          src="./public/videos/castle-stack-medium.mp4"
+          type="video/mp4"
+        />
+      </video> -->
       <!-- <section class="head-media">
         <video autoplay="" muted="" loop="" height="100%">
           <source
@@ -92,9 +97,117 @@
         </p>
       </section> -->
       <section class="details">
-        <h2>Videos of Various Learned Emergent Group Strategies </h2>
-        <a class="anchor" id="atomic-a"></a>
-        <h3>Atomic Skills</h3>
+        <h2>Evolution of the Agent</h2>
+        <p>The following sections and videos explore the development and emergence of strategies of our trained agent, competing against team TB (Toad Brigade) which was the top ranked team in the associated Kaggle Competition, and itself.</p>
+        <h3>1. Atomic Skills</h3>
+        <p>
+          Training from scratch, our agent quickly learns to collect resources and build city tiles. However, it is hard to learn to preserve resources as well as seize the opponent's resources, which often leads to the sudden collapse of cities and final losses.
+          Our agent expands cities quickly at the beginning of the game, but at the cost of using up all the trees on our side and losing the game in the end. Units tend to work more individually and focus on collecting resources without longer term planning.
+        </p>
+        <div>
+          <div style="display:inline-block">
+            <video autoplay="" muted="" loop="" height="250px" controls>
+              <source src="./public/videos/tb_vs_agent_early.mp4" type="video/mp4"/>
+            </video>
+            <p class="caption">
+              Team TB (Blue) vs Our Agent (Yellow). Blue wins.
+            </p>
+          </div>
+          <div style="display:inline-block">
+            <video autoplay="" muted="" loop="" height="250px" controls>
+              <source src="./public/videos/agent_vs_agent_early.mp4" type="video/mp4"/>
+            </video>
+            <p class="caption">
+              Our Agent (Blue) vs Our Agent (Yellow). Blue wins.
+            </p>
+          </div>
+        </div>
+        <h3>2. Regional Skills, Some Planning</h3>
+        <p>
+          As training proceeds, our agent gradually learns to optimize the building of cities and learn how to sustainably use resources. Moreover, our agent begins to protect its own resources out of the opponent's reach occasionally. However, it remains too conservative to harass the opponent's territory. In other words, our agent of this stage develops several advanced strategies but concentrates on self-development. Rather than get involved in fierce competition, our agent prefers peaceful development with more complex group strategies involving multiple units working together to expand a city sustainably.
+        </p>
+        <div>
+        <div style="display:inline-block">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/tb_vs_agent_mid.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Team TB (Blue) vs Our Agent (Yellow). Blue wins.
+          </p>
+        </div>
+        <div style="display:inline-block">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/agent_vs_agent_mid.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Our Agent (Blue) vs Our Agent (Yellow). Blue wins.
+          </p>
+        </div>
+      </div>
+      <h3>3. Stronger Planning</h3>
+        <p>
+          At this stage, our agent shows aggressive strategies like sending workers to plunder the opponent's resources. At the same time, it discovers better defense strategies like building the city in a straight line to block enemy movements. Interestingly our agent builds many rather useless cart units at this stage, but is still able to perform very well. 
+          Strategies learned here are much more complex and counter the opponents often, in addition to reaching a more global scale of control that coordinates units across the map. Some strategies include building a long wall of city tiles + units to block opposition movement, exploiting opposition mistakes, and more.
+        </p>
+        <div>
+        <div style="display:inline-block">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/tb_vs_agent_3.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Team TB (Blue) vs Our Agent (Yellow). Yellow wins.
+          </p>
+        </div>
+        <div style="display:inline-block">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/agent_vs_agent_3_2.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Our Agent (Blue) vs Our Agent (Yellow). Yellow wins.
+          </p>
+        </div>
+      </div>
+      <h3>4. Global Skills, Unique Emergent Strategies</h3>
+        <p>
+          Finally, our agent begins to exhibit some highly complex strategies that many of the top human written rule based solutions have never found or were able to feasibly to produce (verified by looking at strategies of the top rule-based solutions in the associated Kaggle competition). This includes diagonal walls of units for efficient space limitation, smart infiltration of opposition spaces with just a few units to deplete their resources, and more.
+          Some of the more global/macro level strategies that developed include fuel cost calculation across all city tiles and ensuring almost all resources are used before the end of the game, as well as surrounding and optimal harvesting of regrowable tree tiles.
+        </p>
+        <div style="">
+        <div style="display:inline-block">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/tb_vs_agent_4.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Team TB (Blue) vs Our Agent (Yellow). Yellow wins.
+          </p>
+        </div>
+        <div style="display:inline-block;">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/tb_vs_agent_4_2.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Team TB (Blue) vs Our Agent (Yellow). Yellow wins.
+          </p>
+        </div>
+        <div style="display:inline-block">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/agent_vs_agent_4_3.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Our Agent (Blue) vs Our Agent (Yellow). Blue wins.
+          </p>
+        </div>
+        <div style="display:inline-block">
+          <video autoplay="" muted="" loop="" height="250px" controls>
+            <source src="./public/videos/agent_vs_agent_4_4.mp4" type="video/mp4"/>
+          </video>
+          <p class="caption">
+            Our Agent (Blue) vs Our Agent (Yellow). Blue wins.
+          </p>
+        </div>
+      </div>
+        <!-- <a class="anchor" id="atomic-a"></a> -->
+        <!-- <h3>Atomic Skills</h3>
         <section class="skill-videos">
           <div>
             <video autoplay="" muted="" loop="" height="200px">
@@ -202,7 +315,7 @@
           </div>
         </section>
         <a class="anchor" id="rules-a"></a>
-        <h2>Game Rules</h2>
+        <h2>Game Rules</h2> -->
         
     </main>
   </body>
